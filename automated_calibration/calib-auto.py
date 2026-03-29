@@ -85,7 +85,6 @@ for idx,path in enumerate(image_paths):
         continue
 
     pts = centroids[1:]   # remove background
-    vis = cv2.cvtColor(img8, cv2.COLOR_GRAY2BGR)
     pts=order_points(pts)
     objpoints.append(objp)
     imgpoints.append(pts.astype(np.float32))
