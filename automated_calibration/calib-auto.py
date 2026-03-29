@@ -3,11 +3,12 @@ import numpy as np
 import glob
 import os
 import matplotlib.pyplot as plt
+from scipy.spatial import ConvexHull
 
 folder = "/home/aayushi/Documents/Lepton/capture_march_20"
 THRESH = 200
 rows, cols = 4, 4
-spacing = 20/7      # mm
+spacing = 200/7      # mm
 
 kernel = np.ones((3,3), np.uint8)
 

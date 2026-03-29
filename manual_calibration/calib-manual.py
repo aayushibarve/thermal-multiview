@@ -8,7 +8,7 @@ image_folder = '/home/aayushi/Documents/Lepton/capture_march_11'
 calib_output_file = '/home/aayushi/semester-project/camera_params.npz'
 
 rows, cols = 4, 4
-spacing = 20/7  #in mm
+spacing = 200/7  #in mm
 
 with open(save_file, 'r') as f:
     annotated_data = json.load(f)
