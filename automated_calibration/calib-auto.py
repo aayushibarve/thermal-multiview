@@ -94,9 +94,9 @@ h, w = img16.shape
 
 ret, K, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints,imgpoints,(w, h),None,None)
 
-print("\nCamera matrix:", K)
-print("\nDistortion:", dist)
-print("\nReprojection error:", ret)
+print("Camera matrix:", K)
+print("Distortion:", dist)
+print("Reprojection error:", ret)
 
 #Sanity check: If reprojection error is >1px, order_points probably did not work correctly. May need to exclude such images from the calibration dataset
 save_file = "camera_params.npz"
