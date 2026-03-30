@@ -1,18 +1,16 @@
 import cv2
 import numpy as np
 import glob
-import os
-import matplotlib.pyplot as plt
-from scipy.spatial import ConvexHull
 
-folder = "/home/aayushi/Documents/Lepton/capture_march_20"
-THRESH = 200
-rows, cols = 4, 4
+#This code is for the cardboard mask
+
+folder = "/home/aayushi/Documents/Lepton/capture_march_20" #Chnage based on device
+THRESH = 200 #Tune this to make sure 16 (or however many) blobs are detected
+rows, cols = 4, 4 #Change based on the grid you use
 spacing = 200/7      # mm
 
 kernel = np.ones((3,3), np.uint8)
 
-# 4x4 planar grid
 objp = np.zeros((rows*cols, 3), np.float32)
 
 objp[:, :2] = np.mgrid[
@@ -94,27 +92,15 @@ print("Images used:", len(objpoints))
 
 h, w = img16.shape
 
-ret, K, dist, rvecs, tvecs = cv2.calibrateCamera(
-    objpoints,
-    imgpoints,
-    (w, h),
-    None,
-    None
-)
+ret, K, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints,imgpoints,(w, h),None,None)
 
 print("\nCamera matrix:\n", K)
 print("\nDistortion:\n", dist)
 print("\nReprojection error:", ret)
 
+#Sanity check: If reprojection error is >1px, order_points probably did not work correctly. May need to exclude such images from the calibration dataset
 save_file = "camera_params.npz"
 
-np.savez(
-    save_file,
-    ret=ret,
-    K=K,
-    dist=dist,
-    rvecs=rvecs,
-    tvecs=tvecs
-)
+np.savez(save_file,ret=ret,K=K,dist=dist,rvecs=rvecs,tvecs=tvecs)
 
 print(f"Camera parameters saved to {save_file}")
