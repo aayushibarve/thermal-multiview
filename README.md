@@ -88,19 +88,17 @@ Pairs are evaluated on precision and recall using geometric consistency (RANSAC 
 
 ### 3. Deep Learning Features
 
-`feature_evaluation/superpoint_trial.ipynb` evaluates SuperPoint + LightGlue on thermal images. The spatial distribution of matches is analysed to understand why models trained on visible-spectrum imagery struggle with thermal scenes.
+`feature_evaluation/superpoint_trial.ipynb` evaluates SuperPoint + LightGlue on thermal images.
 
 ### 4. Sparse Reconstruction (SfM)
 
 `sparse_recon.py` implements an incremental Structure-from-Motion pipeline:
-- SIFT feature detection
-- FLANN matching with Lowe ratio test
+- KAZE feature detection with CLAHE (this block can be replaced with other feature detectors depending on the results of the detector evaluation)
 - Essential matrix estimation + `recoverPose` for the seed pair
 - Incremental camera registration via PnP RANSAC
 - Triangulation with cheirality check
-- A global point map with per-observation tracking
 
-A controlled **kettle turntable dataset** (full 360° rotation, fixed camera) provides approximate ground-truth poses for quantitative evaluation.
+A controlled kettle turntable dataset (full 360° rotation, fixed camera) provides approximate ground-truth poses for quantitative evaluation.
 
 ### 5. Dense Reconstruction
 
@@ -110,10 +108,6 @@ A controlled **kettle turntable dataset** (full 360° rotation, fixed camera) pr
 - **Voxel carving**: Reconstructs the visual hull from segmented silhouettes.
 
 Outputs (`.ply` files + interactive HTML viewers) are saved in `reconstructions/`.
-
-### 6. Temperature Monitoring
-
-`temperature_monitoring/temperature_monitoring.ino` is an Arduino sketch used to monitor reference temperatures during data collection, helping ensure consistent thermal conditions across captures.
 
 ---
 
