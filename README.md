@@ -86,11 +86,8 @@ Both methods output standard camera intrinsics (`K`) and distortion coefficients
 
 Pairs are evaluated on precision and recall using geometric consistency (RANSAC Essential Matrix). Results are saved as CSV files for analysis.
 
-### 3. Deep Learning Features
 
-`feature_evaluation/superpoint_trial.ipynb` evaluates SuperPoint + LightGlue on thermal images.
-
-### 4. Sparse Reconstruction (SfM)
+### 3. Sparse Reconstruction (SfM)
 
 `sparse_recon.py` implements an incremental Structure-from-Motion pipeline:
 - KAZE feature detection with CLAHE (this block can be replaced with other feature detectors depending on the results of the detector evaluation)
@@ -100,7 +97,7 @@ Pairs are evaluated on precision and recall using geometric consistency (RANSAC 
 
 A controlled kettle turntable dataset (full 360° rotation, fixed camera) provides approximate ground-truth poses for quantitative evaluation.
 
-### 5. Dense Reconstruction
+### 4. Dense Reconstruction
 
 `dense_recon.ipynb` implements two dense methods using known camera poses:
 
