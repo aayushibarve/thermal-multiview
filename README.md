@@ -7,7 +7,7 @@ A semester project at EPFL's Distributed Intelligent Systems and Algorithms Lab 
 ## Repository Structure
 
 ```
-DISAL-semester-project/
+thermal-multiview/
 │
 ├── approximate_camera_poses/
 │   ├── camera_poses.pkl          # Pre-computed approximate ground-truth poses
